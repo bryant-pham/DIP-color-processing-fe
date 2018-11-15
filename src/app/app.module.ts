@@ -22,11 +22,13 @@ import { DevModuleModule } from './+dev-module';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import { ImageProcessingService } from './services/imageprocessing.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState
+  AppState,
+  ImageProcessingService
 ];
 
 interface StoreType {

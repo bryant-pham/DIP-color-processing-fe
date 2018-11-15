@@ -1,37 +1,21 @@
-<div>
-  <h1 x-large class="sample-content">Your Content Here</h1>
-
-  <hr>
-
-  <div>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
-  </div>
-
-  <hr>
-
-  <div>
-    <h4>Local State</h4>
-
-    <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
-
-      <input
-        [value]="localState.value"
-        (input)="localState.value = $event.target.value"
-        placeholder="Submit Local State to App State"
-        autofocus>
-
-      <button>Submit Value</button>
-    </form>
-    <!--
-        <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
-        Rather than wiring up two-way data-binding ourselves with [value] and (input)
-        we can use Angular's [(ngModel)] syntax
-        <input type="text" name="textInput" [(ngModel)]="localState.value" autofocus>
-      -->
-
-    <pre>this.localState = {{ localState | json }}</pre>
-
-  </div>
-
+<div class="container-fluid dip-container">
+    <div class="form-check">
+      <input [(ngModel)]="modelSpace" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="HSI" checked>
+      <label class="form-check-label" for="exampleRadios1">
+        RGB to HSI
+      </label>
+    </div>
+    <div class="form-check">
+      <input [(ngModel)]="modelSpace" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="RGB">
+      <label class="form-check-label" for="exampleRadios2">
+        HSI to RGB
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlFile1">Select image:</label>
+      <input type="file" (change)="fileSelected($event.target.files[0])" class="form-control-file" accept="image/png, image/jpeg" id="exampleFormControlFile1">
+    </div>
+    <div>
+      <button class="btn btn-primary" (click)="submit()">Submit</button>
+    </div>
 </div>
