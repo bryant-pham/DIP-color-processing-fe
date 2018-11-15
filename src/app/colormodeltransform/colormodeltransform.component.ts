@@ -1,24 +1,15 @@
-import {
-  Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 
 import { ImageProcessingService } from '../services/imageprocessing.service';
 
 @Component({
-  selector: 'home',  // <home></home>
-  styleUrls: [ './home.component.css' ],
-  templateUrl: './home.component.html'
+  selector: 'color-model_transform',
+  styleUrls: [ './colormodeltransform.component.css' ],
+  templateUrl: './colormodeltransform.component.html'
 })
-export class HomeComponent {
-  /**
-   * Set our default values
-   */
-  public localState = { value: '' };
-  /**
-   * TypeScript public modifiers
-   */
+export class ColorModelTransformComponent {
   public modelSpace: string = 'HSI';
-  public image: any;
+  public image: File;
 
   constructor(
     public processingService: ImageProcessingService

@@ -14,15 +14,15 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
+import { ColorModelTransformComponent } from './colormodeltransform';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
 import { DevModuleModule } from './+dev-module';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
 import { ImageProcessingService } from './services/imageprocessing.service';
+import { IntensitySliceComponent } from './intensityslice/intensityslice.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -45,9 +45,9 @@ interface StoreType {
   declarations: [
     AppComponent,
     AboutComponent,
-    HomeComponent,
-    NoContentComponent,
-    XLargeDirective
+    ColorModelTransformComponent,
+    IntensitySliceComponent,
+    NoContentComponent
   ],
   /**
    * Import Angular's modules.

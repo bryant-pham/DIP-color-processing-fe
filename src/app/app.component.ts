@@ -19,17 +19,13 @@ export const ROOT_SELECTOR = 'app';
   ],
   template: `
     <nav>
-      <a [routerLink]=" ['./'] "
+      <a [routerLink]=" ['./colormodeltransform'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Index
+        Color Model Transform
       </a>
-      <a [routerLink]=" ['./home'] "
+      <a [routerLink]=" ['./intensityslice'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Home
-      </a>
-      <a [routerLink]=" ['./detail'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Detail
+        Intensity Slicing
       </a>
       <a [routerLink]=" ['./barrel'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">

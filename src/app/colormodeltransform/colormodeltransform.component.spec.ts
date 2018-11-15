@@ -13,12 +13,12 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
  * Load the implementations that should be tested.
  */
 import { AppState } from '../app.service';
-import { HomeComponent } from './home.component';
+import { ColorModelTransformComponent } from './colormodeltransform.component';
 import { Title } from './title';
 
 describe(`Home`, () => {
-  let comp: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+  let comp: ColorModelTransformComponent;
+  let fixture: ComponentFixture<ColorModelTransformComponent>;
   let injector: TestBed;
   let service: AppState;
   let httpMock: HttpTestingController;
@@ -28,7 +28,7 @@ describe(`Home`, () => {
    */
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent],
+      declarations: [ColorModelTransformComponent],
       schemas: [NO_ERRORS_SCHEMA],
       imports: [HttpClientTestingModule],
       providers: [AppState, Title]
@@ -47,7 +47,7 @@ describe(`Home`, () => {
    * Synchronous beforeEach.
    */
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(ColorModelTransformComponent);
     comp = fixture.componentInstance;
 
     /**
