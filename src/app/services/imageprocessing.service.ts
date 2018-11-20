@@ -6,7 +6,7 @@ import { PhaseShift } from '../models/phaseshift';
 import { DIPResponse } from '../models/DIPResponse';
 import { Image } from '../models/image';
 import { select, Store } from '@ngrx/store';
-import { AddImage, SetImages } from '../reducers/actions/image.action';
+import { SetImages } from '../reducers/actions/image.action';
 
 const DEV_HOST = 'http://127.0.0.1:5000/';
 const COLOR_MODEL_TRANSFORM_URL = DEV_HOST + 'colormodeltransform';
@@ -36,7 +36,7 @@ export class ImageProcessingService {
     formData.append('photo',  imageFile);
     return this.http.post(IMAGE_UPLOAD_URL, formData)
       .pipe(map((response) => Image.fromArray(response)))
-      .subscribe((images: Image) => this.store.dispatch(new SetImages(images)));
+      .subscribe((images: Image[]) => this.store.dispatch(new SetImages(images)));
   }
 
   public colorModelTransform(colorSpace: string, image: Image): Observable<DIPResponse> {

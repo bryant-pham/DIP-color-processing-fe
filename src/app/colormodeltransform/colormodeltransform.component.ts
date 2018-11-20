@@ -25,10 +25,9 @@ export class ColorModelTransformComponent implements OnInit {
   }
 
   public submit(): void {
-    this.processingService.colorModelTransform(this.modelSpace, this.image)
+    this.processingService.colorModelTransform(this.modelSpace, this.selectedImage)
       .subscribe((response: DIPResponse) => {
         console.log(response);
-        this.response = response;
       });
   }
 }
