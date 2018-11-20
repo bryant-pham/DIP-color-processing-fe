@@ -1,8 +1,39 @@
 .dip-container {
   margin-top: 17px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .img-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+}
+
+.img-width {
+  width: 512px;
+}
+
+.form-width {
+  width: 500px;
+}
+
+.form-width button {
+  width: 100%;
+}
+
+.photo-label {
+  text-align: center;
+}
+
+img {
+  width: 512px;
+  border-radius: 10px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
 }

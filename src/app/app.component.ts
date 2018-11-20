@@ -34,8 +34,16 @@ export const ROOT_SELECTOR = 'app';
     </nav>
 
     <main>
-      <router-outlet></router-outlet>
-      <image-bar></image-bar>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-10">
+            <router-outlet></router-outlet>
+          </div>
+          <div class="col-md-2">
+            <image-bar></image-bar>
+          </div>
+        </div>
+      </div>
     </main>
   `
 })
