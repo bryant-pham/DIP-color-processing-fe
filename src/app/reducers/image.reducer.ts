@@ -1,8 +1,7 @@
-import { Action } from '@ngrx/store';
 import { Image } from '../models/image';
-import { ActionTypes } from './actions/image.action';
+import { ActionTypes, ActionWithPayload } from './actions/image.action';
 
-export function imageReducer(state: Image[] = [], action: Action) {
+export function imageReducer(state: Image[] = [], action: ActionWithPayload<Image[]>) {
   switch (action.type) {
     case ActionTypes.SET_IMAGES:
       return [ ...action.payload ];

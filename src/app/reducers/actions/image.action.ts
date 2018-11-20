@@ -7,19 +7,23 @@ export enum ActionTypes {
   SELECT_IMAGE = '[Image Component] Select Image',
 }
 
-export class SetImages implements Action {
+export interface ActionWithPayload<T> extends Action {
+  payload: T;
+}
+
+export class SetImages implements ActionWithPayload<Image[]> {
   public readonly type = ActionTypes.SET_IMAGES;
 
   constructor(public payload: Image[]) {}
 }
 
-export class AddImage implements Action {
+export class AddImage implements ActionWithPayload<Image> {
   public readonly type = ActionTypes.ADD_IMAGE;
 
   constructor(public payload: Image) {}
 }
 
-export class SelectImage implements Action {
+export class SelectImage implements ActionWithPayload<Image> {
   public readonly type = ActionTypes.SELECT_IMAGE;
 
   constructor(public payload: Image) {}
