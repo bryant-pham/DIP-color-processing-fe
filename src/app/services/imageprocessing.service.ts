@@ -34,7 +34,7 @@ export class ImageProcessingService {
   public uploadImage(imageFile: File): void {
     const formData = new FormData();
     formData.append('photo',  imageFile);
-    return this.http.post(IMAGE_UPLOAD_URL, formData)
+    this.http.post(IMAGE_UPLOAD_URL, formData)
       .pipe(map((response) => Image.fromArray(response)))
       .subscribe((images: Image[]) => this.store.dispatch(new SetImages(images)));
   }
