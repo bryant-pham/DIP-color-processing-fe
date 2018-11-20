@@ -4,15 +4,17 @@ import { ImageProcessingService } from '../services/imageprocessing.service';
 import { DIPResponse } from '../models/DIPResponse';
 import { SelectedImageService } from '../services/selectedimage.service';
 import { Image } from '../models/image';
+import { PhaseShift } from '../models/phaseshift';
 
 @Component({
-  selector: 'color-model_transform',
-  styleUrls: [ './colormodeltransform.component.css' ],
-  templateUrl: './colormodeltransform.component.html'
+  selector: 'gray-to-color',
+  styleUrls: [ './graytocolor.component.css' ],
+  templateUrl: './graytocolor.component.html'
 })
-export class ColorModelTransformComponent implements OnInit {
-  public modelSpace: string = 'HSI';
+export class GrayToColorComponent implements OnInit {
   public selectedImage: Image;
+  public phaseShifts: PhaseShift = new PhaseShift();
+  public result: DIPResponse;
 
   constructor(
     private processingService: ImageProcessingService,
@@ -25,10 +27,9 @@ export class ColorModelTransformComponent implements OnInit {
   }
 
   public submit(): void {
-    this.processingService.colorModelTransform(this.modelSpace, this.image)
+    this.processingService.grayToColor(this.phaseShifts, this.selectedImage)
       .subscribe((response: DIPResponse) => {
-        console.log(response);
-        this.response = response;
+        this.result = response;
       });
   }
 }

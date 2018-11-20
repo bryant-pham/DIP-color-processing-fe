@@ -39,11 +39,8 @@ export class ImageProcessingService {
       .subscribe((images: Image) => this.store.dispatch(new SetImages(images)));
   }
 
-  public colorModelTransform(modelSpace: string, image: File): Observable<DIPResponse> {
-    const formData = new FormData();
-    formData.append('photo', image);
-    formData.append('model_space', modelSpace);
-    return this.http.post(COLOR_MODEL_TRANSFORM_URL, formData)
+  public colorModelTransform(colorSpace: string, image: Image): Observable<DIPResponse> {
+    return this.http.post(COLOR_MODEL_TRANSFORM_URL, {color_space: colorSpace, filename: image.name})
       .pipe(map((response) => new DIPResponse(response)));
   }
 
@@ -58,11 +55,8 @@ export class ImageProcessingService {
       .pipe(map((response) => new DIPResponse(response)));
   }
 
-  public grayToColor(phaseShifts: PhaseShift, image: File): Observable<DIPResponse> {
-    const formData = new FormData();
-    formData.append('photo', image);
-    formData.append('phase_shifts', this.blobify(phaseShifts));
-    return this.http.post(GRAY_TO_COLOR_URL, formData)
+  public grayToColor(phaseShifts: PhaseShift, image: Image): Observable<DIPResponse> {
+    return this.http.post(GRAY_TO_COLOR_URL, {phase_shifts: phaseShifts, filename: image.name})
       .pipe(map((response) => new DIPResponse(response)));
   }
 

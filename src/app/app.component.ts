@@ -27,17 +27,9 @@ export const ROOT_SELECTOR = 'app';
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Intensity Slicing
       </a>
-      <a [routerLink]=" ['./barrel'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Barrel
-      </a>
-      <a [routerLink]=" ['./about'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        About
-      </a>
-      <a *ngIf="showDevModule" [routerLink]=" ['./dev-module'] "
+      <a [routerLink]=" ['./graytocolor'] "
          routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        DevModule
+        Grayscale to Color
       </a>
     </nav>
 

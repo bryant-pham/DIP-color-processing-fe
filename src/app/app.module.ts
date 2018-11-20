@@ -28,6 +28,7 @@ import { imageReducer } from './reducers/image.reducer';
 import { ImageBarComponent } from './imagebar/imagebar.component';
 import { selectedImageReducer } from './reducers/selectedimage.reducer';
 import { SelectedImageService } from './services/selectedimage.service';
+import { GrayToColorComponent } from './graytocolor/graytocolor.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -54,6 +55,7 @@ interface StoreType {
     ColorModelTransformComponent,
     IntensitySliceComponent,
     ImageBarComponent,
+    GrayToColorComponent,
     NoContentComponent
   ],
   /**

@@ -1,0 +1,8 @@
+.dip-container {
+  margin-top: 17px;
+}
+
+.img-container {
+  display: flex;
+  flex-direction: row;
+}
