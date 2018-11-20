@@ -1,0 +1,15 @@
+<div class="image-bar-container">
+  <div>
+    <div *ngFor="let image of images" class="image-container">
+      <img [src]="image.url" [ngClass]="{'selected': isSelected(image)}" (click)="selectImage(image)" />
+      <div>{{ image.name }}</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Select image:</label>
+    <input type="file" (change)="fileSelected($event.target.files[0])" class="form-control-file" accept="image/png, image/jpeg" id="exampleFormControlFile1">
+  </div>
+  <div>
+    <button class="btn btn-primary" (click)="submit()">Upload</button>
+  </div>
+</div>

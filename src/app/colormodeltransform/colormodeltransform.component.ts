@@ -1,28 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ImageProcessingService } from '../services/imageprocessing.service';
+import { DIPResponse } from '../models/DIPResponse';
+import { SelectedImageService } from '../services/selectedimage.service';
+import { Image } from '../models/image';
 
 @Component({
   selector: 'color-model_transform',
   styleUrls: [ './colormodeltransform.component.css' ],
   templateUrl: './colormodeltransform.component.html'
 })
-export class ColorModelTransformComponent {
+export class ColorModelTransformComponent implements OnInit {
   public modelSpace: string = 'HSI';
-  public image: File;
+  public selectedImage: Image;
 
   constructor(
-    public processingService: ImageProcessingService
+    private processingService: ImageProcessingService,
+    private selectedImageService: SelectedImageService
   ) {}
 
-  public fileSelected(image: any): void {
-    this.image = image;
+  public ngOnInit(): void {
+    this.selectedImageService.getSelectedImage()
+      .subscribe((image: Image) => this.selectedImage = image)
   }
 
   public submit(): void {
     this.processingService.colorModelTransform(this.modelSpace, this.image)
-      .subscribe((response: Response) => {
+      .subscribe((response: DIPResponse) => {
         console.log(response);
+        this.response = response;
       });
   }
 }

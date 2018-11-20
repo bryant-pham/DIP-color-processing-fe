@@ -1,0 +1,24 @@
+.image-bar-container {
+  margin-top: 17px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  overflow-y: scroll;
+}
+
+img {
+  width: 200px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.image-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.selected {
+  border: blue solid 5px;
+}

@@ -43,6 +43,7 @@ export const ROOT_SELECTOR = 'app';
 
     <main>
       <router-outlet></router-outlet>
+      <image-bar></image-bar>
     </main>
   `
 })

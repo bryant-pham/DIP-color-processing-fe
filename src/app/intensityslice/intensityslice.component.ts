@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { ImageProcessingService } from '../services/imageprocessing.service';
+import { DIPResponse } from '../models/DIPResponse';
 
 @Component({
   selector: 'intensity-slice',
@@ -47,8 +48,8 @@ export class IntensitySliceComponent {
   }
 
   public submit(): void {
-    this.processingService.intensitySlice(this.slices, this.intervalCounter, this.image)
-      .subscribe((response: Response) => {
+    this.processingService.intensitySlice(this.sliceValues, this.intervalColors, this.image)
+      .subscribe((response: DIPResponse) => {
         console.log(response);
       });
   }

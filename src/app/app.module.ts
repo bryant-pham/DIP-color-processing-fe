@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreModule } from '@ngrx/store';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -23,12 +24,17 @@ import '../styles/styles.scss';
 import '../styles/headings.css';
 import { ImageProcessingService } from './services/imageprocessing.service';
 import { IntensitySliceComponent } from './intensityslice/intensityslice.component';
+import { imageReducer } from './reducers/image.reducer';
+import { ImageBarComponent } from './imagebar/imagebar.component';
+import { selectedImageReducer } from './reducers/selectedimage.reducer';
+import { SelectedImageService } from './services/selectedimage.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
-  ImageProcessingService
+  ImageProcessingService,
+  SelectedImageService
 ];
 
 interface StoreType {
@@ -47,6 +53,7 @@ interface StoreType {
     AboutComponent,
     ColorModelTransformComponent,
     IntensitySliceComponent,
+    ImageBarComponent,
     NoContentComponent
   ],
   /**
@@ -60,6 +67,10 @@ interface StoreType {
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
+    }),
+    StoreModule.forRoot({
+      images: imageReducer,
+      selectedImage: selectedImageReducer
     }),
 
     /**
