@@ -62,14 +62,10 @@ export class ImageProcessingService {
       .pipe(map((response) => new DIPResponse(response)));
   }
 
-  // public smoothenSharpen(modelSpace: string, operation: string, image: Image): Observable<DIPResponse> {
-  //   const formData = new FormData();
-  //   formData.append('photo', image);
-  //   formData.append('model_space', modelSpace);
-  //   formData.append('operation', operation);
-  //   return this.http.post(SMOOTHEN_SHARPEN_URL, formData)
-  //     .pipe(map((response) => new DIPResponse(response)));
-  // }
+  public smoothenSharpen(filter: string, image: Image): Observable<DIPResponse> {
+    return this.http.post(SMOOTHEN_SHARPEN_URL, {filter, filename: image.name})
+      .pipe(map((response) => new DIPResponse(response)));
+  }
 
   private blobify(obj: any): Blob {
     return new Blob([JSON.stringify(obj)], { type : 'application/json' });

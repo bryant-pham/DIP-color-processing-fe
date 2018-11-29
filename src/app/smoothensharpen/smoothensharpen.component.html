@@ -1,0 +1,49 @@
+<div class="container-fluid dip-container">
+  <div class="img-container">
+    <div class="img-width original-image-container">
+      <div *ngIf="selectedImage">
+        <div>
+          <img [src]="selectedImage.url"/>
+        </div>
+        <div class="photo-label">Original</div>
+      </div>
+    </div>
+    <div *ngIf="result" class="image-flex-row">
+      <div>
+        <img [src]="result.urls[0]"/>
+        <div class="photo-label">RGB Result</div>
+      </div>
+      <div>
+        <img [src]="result.urls[1]"/>
+        <div class="photo-label">HSI Result</div>
+      </div>
+      <div>
+        <img [src]="result.urls[2]"/>
+        <div class="photo-label">Difference</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-check">
+    <div>
+      <input [(ngModel)]="filter" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="gaussian" checked>
+      <label class="form-check-label" for="exampleRadios1">
+        Gaussian
+      </label>
+    </div>
+    <div>
+      <input [(ngModel)]="filter" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="uniform">
+      <label class="form-check-label" for="exampleRadios2">
+        Uniform
+      </label>
+    </div>
+    <div>
+      <input [(ngModel)]="filter" class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios3" value="laplacian">
+      <label class="form-check-label" for="exampleRadios3">
+        Laplacian
+      </label>
+    </div>
+    <div>
+      <button class="btn btn-primary" (click)="submit()">Submit</button>
+    </div>
+  </div>
+</div>

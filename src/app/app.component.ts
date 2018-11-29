@@ -31,6 +31,10 @@ export const ROOT_SELECTOR = 'app';
          routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Grayscale to Color
       </a>
+      <a [routerLink]=" ['./smoothensharpen'] "
+         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+        Smoothen/Sharpen
+      </a>
     </nav>
 
     <main>
