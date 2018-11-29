@@ -14,6 +14,7 @@ export class SmoothenSharpenComponent implements OnInit {
   public filter: string = 'gaussian';
   public selectedImage: Image;
   public result: DIPResponse;
+  public loading = false;
 
   constructor(
     private processingService: ImageProcessingService,
@@ -26,9 +27,11 @@ export class SmoothenSharpenComponent implements OnInit {
   }
 
   public submit(): void {
+    this.loading = true;
     this.processingService.smoothenSharpen(this.filter, this.selectedImage)
       .subscribe((response: DIPResponse) => {
         this.result = response;
+        this.loading = false;
       });
   }
 }

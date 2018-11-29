@@ -37,3 +37,9 @@ img {
   display: flex;
   justify-content: center;
 }
+
+spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}

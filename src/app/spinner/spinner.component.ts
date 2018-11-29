@@ -6,15 +6,14 @@ import { SelectedImageService } from '../services/selectedimage.service';
 import { Image } from '../models/image';
 
 @Component({
-  selector: 'color-model_transform',
-  styleUrls: [ './colormodeltransform.component.css' ],
-  templateUrl: './colormodeltransform.component.html'
+  selector: 'spinner',
+  styleUrls: [ './spinner.component.css' ],
+  templateUrl: './spinner.component.html'
 })
-export class ColorModelTransformComponent implements OnInit {
+export class SpinnerComponent implements OnInit {
   public modelSpace: string = 'HSI';
   public selectedImage: Image;
   public result: DIPResponse;
-  public loading = false;
 
   constructor(
     private processingService: ImageProcessingService,
@@ -27,11 +26,9 @@ export class ColorModelTransformComponent implements OnInit {
   }
 
   public submit(): void {
-    this.loading = true;
     this.processingService.colorModelTransform(this.modelSpace, this.selectedImage)
       .subscribe((response: DIPResponse) => {
         this.result = response;
-        this.loading = false;
       });
   }
 }

@@ -14,6 +14,7 @@ export class IntensitySliceComponent {
   public sliceValues: string[] = [''];
   public intervalCounter: string[] = ['', ''];
   public intervalColors: string[] = ['', ''];
+  public loading = false;
 
   constructor(
     public processingService: ImageProcessingService
@@ -48,9 +49,11 @@ export class IntensitySliceComponent {
   }
 
   public submit(): void {
+    this.loading = true;
     this.processingService.intensitySlice(this.sliceValues, this.intervalColors, this.image)
       .subscribe((response: DIPResponse) => {
         console.log(response);
+        this.loading = false;
       });
   }
 }

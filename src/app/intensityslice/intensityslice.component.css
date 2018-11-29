@@ -1,3 +1,9 @@
 .dip-container {
   margin-top: 17px;
 }
+
+spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}

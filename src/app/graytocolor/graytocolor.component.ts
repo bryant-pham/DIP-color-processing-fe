@@ -15,6 +15,7 @@ export class GrayToColorComponent implements OnInit {
   public selectedImage: Image;
   public phaseShifts: PhaseShift = new PhaseShift();
   public result: DIPResponse;
+  public loading = false;
 
   constructor(
     private processingService: ImageProcessingService,
@@ -27,9 +28,11 @@ export class GrayToColorComponent implements OnInit {
   }
 
   public submit(): void {
+    this.loading = true;
     this.processingService.grayToColor(this.phaseShifts, this.selectedImage)
       .subscribe((response: DIPResponse) => {
         this.result = response;
+        this.loading = false;
       });
   }
 }
