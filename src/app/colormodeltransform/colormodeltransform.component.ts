@@ -13,6 +13,7 @@ import { Image } from '../models/image';
 export class ColorModelTransformComponent implements OnInit {
   public modelSpace: string = 'HSI';
   public selectedImage: Image;
+  public result: DIPResponse;
 
   constructor(
     private processingService: ImageProcessingService,
@@ -27,7 +28,7 @@ export class ColorModelTransformComponent implements OnInit {
   public submit(): void {
     this.processingService.colorModelTransform(this.modelSpace, this.selectedImage)
       .subscribe((response: DIPResponse) => {
-        console.log(response);
+        this.result = response;
       });
   }
 }

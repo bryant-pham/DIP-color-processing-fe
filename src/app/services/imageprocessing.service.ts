@@ -8,8 +8,8 @@ import { Image } from '../models/image';
 import { select, Store } from '@ngrx/store';
 import { SetImages } from '../reducers/actions/image.action';
 
-// const DEV_HOST = 'http://127.0.0.1:5000/';
-const DEV_HOST = 'http://192.241.234.235:5000/';
+const DEV_HOST = 'http://127.0.0.1:5000/';
+// const DEV_HOST = 'http://192.241.234.235:5000/';
 const COLOR_MODEL_TRANSFORM_URL = DEV_HOST + 'colormodeltransform';
 const INTENSITY_SLICE_URL = DEV_HOST + 'intensityslice';
 const GRAY_TO_COLOR_URL = DEV_HOST + 'graytocolor';
@@ -41,7 +41,8 @@ export class ImageProcessingService {
   }
 
   public colorModelTransform(colorSpace: string, image: Image): Observable<DIPResponse> {
-    return this.http.post(COLOR_MODEL_TRANSFORM_URL, {color_space: colorSpace, filename: image.name})
+    return this.http.post(COLOR_MODEL_TRANSFORM_URL,
+      {color_model: colorSpace, filename: image.name})
       .pipe(map((response) => new DIPResponse(response)));
   }
 
@@ -61,7 +62,7 @@ export class ImageProcessingService {
       .pipe(map((response) => new DIPResponse(response)));
   }
 
-  public smoothenSharpen(modelSpace: string, operation: string, image: File): Observable<DIPResponse> {
+  public smoothenSharpen(modelSpace: string, operation: string, image: Image): Observable<DIPResponse> {
     const formData = new FormData();
     formData.append('photo', image);
     formData.append('model_space', modelSpace);
