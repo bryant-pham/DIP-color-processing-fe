@@ -17,10 +17,6 @@
   justify-content: space-around;
 }
 
-.img-width {
-  width: 256px;
-}
-
 .form-width {
   width: 500px;
 }
@@ -34,7 +30,7 @@
 }
 
 img {
-  width: 256px;
+  width: 325px;
   border-radius: 10px;
 }
 
