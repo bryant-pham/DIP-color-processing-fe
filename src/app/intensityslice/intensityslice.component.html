@@ -1,23 +1,37 @@
 <div class="container-fluid dip-container">
   <spinner *ngIf="loading"></spinner>
+  <div class="img-container">
+    <div>
+      <div *ngIf="selectedImage">
+        <div>
+          <img [src]="selectedImage.url"/>
+        </div>
+        <div class="photo-label">Original</div>
+      </div>
+    </div>
+    <div class="img-width">
+      <div *ngIf="result">
+        <div>
+          <img [src]="result.urls[0]"/>
+        </div>
+        <div class="photo-label">Result</div>
+      </div>
+    </div>
+  </div>
   <div class="form-group row" *ngFor="let slice of sliceCounter; let i = index">
     <label class="col-sm-2 col-form-label">Slice {{ i+1 }}</label>
     <div class="col-sm-10">
       <input class="form-control" (input)="sliceChange($event.target.value, i)" placeholder="Enter intensity">
     </div>
   </div>
-  <div class="form-group row" *ngFor="let color of intervalCounter; let i = index">
-    <label class="col-sm-2 col-form-label">Interval Color {{ i+1 }}</label>
+  <div class="form-group row" *ngFor="let color of sliceCounter; let i = index">
+    <label class="col-sm-2 col-form-label">Slice Color {{ i+1 }}</label>
     <div class="col-sm-10">
       <input class="form-control" (input)="intervalColorChange($event.target.value, i)" placeholder="Enter RGB color in form: 0,0,0">
     </div>
   </div>
   <div>
-    <small>Interval colors are applied </small>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlFile1">Select image:</label>
-    <input type="file" (change)="fileSelected($event.target.files[0])" class="form-control-file" accept="image/png, image/jpeg" id="exampleFormControlFile1">
+    <!--<small>Interval colors are applied </small>-->
   </div>
   <div>
     <button class="btn btn-info" (click)="addSlice()">Add Slice</button>
@@ -29,3 +43,4 @@
     <button class="btn btn-primary" (click)="submit()">Submit</button>
   </div>
 </div>
+
