@@ -18,29 +18,30 @@
       </div>
     </div>
   </div>
-  <div class="form-group row" *ngFor="let slice of sliceCounter; let i = index">
-    <label class="col-sm-2 col-form-label">Slice {{ i+1 }}</label>
-    <div class="col-sm-10">
-      <input class="form-control" (input)="sliceChange($event.target.value, i)" placeholder="Enter intensity">
+  <div>
+    <div class="form-group row" *ngFor="let slice of sliceCounter; let i = index">
+      <label class="col-sm-2 col-form-label">Slice {{ i+1 }}</label>
+      <div class="col-sm-10">
+        <input class="form-control" [(ngModel)]="sliceValues[i]" (blur)="sliceChange($event.target.value, i)" placeholder="Enter intensity">
+      </div>
     </div>
-  </div>
-  <div class="form-group row" *ngFor="let color of sliceCounter; let i = index">
-    <label class="col-sm-2 col-form-label">Slice Color {{ i+1 }}</label>
-    <div class="col-sm-10">
-      <input class="form-control" (input)="intervalColorChange($event.target.value, i)" placeholder="Enter RGB color in form: 0,0,0">
+    <div class="form-group row" *ngFor="let color of sliceCounter; let i = index">
+      <label class="col-sm-2 col-form-label">Color below slice {{ i+1 }}</label>
+      <div class="col-sm-10">
+        <input class="form-control" [(ngModel)]="sliceColors[i]" (input)="intervalColorChange($event.target.value, i)" placeholder="Enter RGB color in form: 0,0,0">
+      </div>
     </div>
-  </div>
-  <div>
-    <!--<small>Interval colors are applied </small>-->
-  </div>
-  <div>
-    <button class="btn btn-info" (click)="addSlice()">Add Slice</button>
-  </div>
-  <div>
-    <button class="btn btn-info" (click)="removeSlice()">Remove Slice</button>
-  </div>
-  <div>
-    <button class="btn btn-primary" (click)="submit()">Submit</button>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Color above slice {{ sliceColors.length }}</label>
+      <div class="col-sm-10">
+        <input class="form-control" [(ngModel)]="lastSliceColor" placeholder="Enter RGB color in form: 0,0,0">
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-info" (click)="addSlice()">Add Slice</button>
+      <button class="btn btn-info action-btn" (click)="removeSlice()">Remove Slice</button>
+      <button class="btn btn-primary action-btn" (click)="submit()">Submit</button>
+    </div>
   </div>
 </div>
 

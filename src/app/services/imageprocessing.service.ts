@@ -8,8 +8,8 @@ import { Image } from '../models/image';
 import { select, Store } from '@ngrx/store';
 import { SetImages } from '../reducers/actions/image.action';
 
-// const DEV_HOST = 'http://127.0.0.1:5000/';
-const DEV_HOST = 'http://192.241.234.235:5000/';
+const DEV_HOST = 'http://127.0.0.1:5000/';
+// const DEV_HOST = 'http://192.241.234.235:5000/';
 const COLOR_MODEL_TRANSFORM_URL = DEV_HOST + 'colormodeltransform';
 const INTENSITY_SLICE_URL = DEV_HOST + 'intensityslice';
 const GRAY_TO_COLOR_URL = DEV_HOST + 'graytocolor';
@@ -46,14 +46,13 @@ export class ImageProcessingService {
       .pipe(map((response) => new DIPResponse(response)));
   }
 
-  public intensitySlice(slices: string[],
+  public intensitySlice(slices: number[],
                         intervalColors: string[],
-                        image: File): Observable<DIPResponse> {
-    const formData = new FormData();
-    formData.append('photo', image);
-    formData.append('slices', this.blobify(slices));
-    formData.append('interval_colors', this.blobify(intervalColors));
-    return this.http.post(INTENSITY_SLICE_URL, formData)
+                        lastIntervalColor: string,
+                        image: Image): Observable<DIPResponse> {
+    intervalColors = [ ...intervalColors ];
+    intervalColors.push(lastIntervalColor);
+    return this.http.post(INTENSITY_SLICE_URL, {filename: image.name, slices, interval_colors: intervalColors})
       .pipe(map((response) => new DIPResponse(response)));
   }
 

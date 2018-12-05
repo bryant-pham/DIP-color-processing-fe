@@ -11,10 +11,10 @@ import { SelectedImageService } from '../services/selectedimage.service';
   templateUrl: './intensityslice.component.html'
 })
 export class IntensitySliceComponent implements OnInit {
-  public image: File;
-  public sliceCounter: string[] = [''];
-  public sliceValues: string[] = [''];
+  public sliceCounter: number[] = [0];
+  public sliceValues: number[] = [0];
   public sliceColors: string[] = [''];
+  public lastSliceColor: string = '';
   public loading = false;
   public result: DIPResponse;
   public selectedImage: Image;
@@ -30,23 +30,21 @@ export class IntensitySliceComponent implements OnInit {
   }
 
   public addSlice(): void {
-    this.sliceCounter.push('');
-    this.sliceValues.push('');
-    this.sliceColors.push('');
+    this.sliceCounter.push(0);
+    this.sliceValues.push(0);
+    this.sliceColors.push(this.lastSliceColor);
+    this.lastSliceColor = '';
   }
 
   public removeSlice(): void {
     this.sliceCounter.pop();
     this.sliceValues.pop();
-    this.sliceColors.pop();
-  }
-
-  public fileSelected(image: any): void {
-    this.image = image;
+    this.lastSliceColor = this.sliceColors.pop();
   }
 
   public sliceChange(value: string, index: number): void {
-    this.sliceValues[index] = value;
+    this.sliceValues[index] = parseInt(value, 10);
+    this.sliceValues.sort((x: number, y: number) => x - y);
     console.log(this.sliceValues);
   }
 
@@ -57,7 +55,7 @@ export class IntensitySliceComponent implements OnInit {
 
   public submit(): void {
     this.loading = true;
-    this.processingService.intensitySlice(this.sliceValues, this.sliceColors, this.image)
+    this.processingService.intensitySlice(this.sliceValues, this.sliceColors, this.lastSliceColor, this.selectedImage)
       .subscribe((response: DIPResponse) => {
         this.result = response;
         this.loading = false;
