@@ -60,7 +60,7 @@ export class ImageProcessingService {
       .pipe(map((response) => new DIPResponse(response)));
   }
 
-  public grayToColor(phaseShifts: PhaseShift, image: Image): Observable<DIPResponse> {
+  public grayToColor(phaseShifts: any, image: Image): Observable<DIPResponse> {
     return this.http.post(GRAY_TO_COLOR_URL, {phase_shifts: phaseShifts, filename: image.name})
       .pipe(map((response) => new DIPResponse(response)));
   }
