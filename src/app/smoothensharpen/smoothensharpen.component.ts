@@ -15,6 +15,8 @@ export class SmoothenSharpenComponent implements OnInit {
   public selectedImage: Image;
   public result: DIPResponse;
   public loading = false;
+  public sigma: number;
+  public kernelWidth: number;
 
   constructor(
     private processingService: ImageProcessingService,
@@ -28,7 +30,7 @@ export class SmoothenSharpenComponent implements OnInit {
 
   public submit(): void {
     this.loading = true;
-    this.processingService.smoothenSharpen(this.filter, this.selectedImage)
+    this.processingService.smoothenSharpen(this.filter, this.sigma, this.kernelWidth, this.selectedImage)
       .subscribe((response: DIPResponse) => {
         this.result = response;
         this.loading = false;

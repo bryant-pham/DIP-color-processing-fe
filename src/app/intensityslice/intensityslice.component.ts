@@ -55,7 +55,8 @@ export class IntensitySliceComponent implements OnInit {
 
   public submit(): void {
     this.loading = true;
-    this.processingService.intensitySlice(this.sliceValues, this.sliceColors, this.lastSliceColor, this.selectedImage)
+    this.processingService
+      .intensitySlice(this.sliceValues, this.sliceColors, this.lastSliceColor, this.selectedImage)
       .subscribe((response: DIPResponse) => {
         this.result = response;
         this.loading = false;

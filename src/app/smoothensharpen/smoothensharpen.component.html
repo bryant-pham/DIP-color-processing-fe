@@ -24,27 +24,43 @@
       </div>
     </div>
   </div>
-  <div class="form-check">
-    <div>
-      <input [(ngModel)]="filter" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="gaussian" checked>
-      <label class="form-check-label" for="exampleRadios1">
-        Gaussian
-      </label>
+  <div class="field-container">
+    <div class="form-check">
+      <div>
+        <input [(ngModel)]="filter" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="gaussian" checked>
+        <label class="form-check-label" for="exampleRadios1">
+          Gaussian
+        </label>
+      </div>
+      <div>
+        <input [(ngModel)]="filter" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="uniform">
+        <label class="form-check-label" for="exampleRadios2">
+          Average
+        </label>
+      </div>
+      <div>
+        <input [(ngModel)]="filter" class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios3" value="laplacian">
+        <label class="form-check-label" for="exampleRadios3">
+          Laplacian
+        </label>
+      </div>
     </div>
-    <div>
-      <input [(ngModel)]="filter" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="uniform">
-      <label class="form-check-label" for="exampleRadios2">
-        Uniform
-      </label>
-    </div>
-    <div>
-      <input [(ngModel)]="filter" class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios3" value="laplacian">
-      <label class="form-check-label" for="exampleRadios3">
-        Laplacian
-      </label>
-    </div>
-    <div>
-      <button class="btn btn-primary" (click)="submit()">Submit</button>
+    <div class="input-container">
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Kernel Width</label>
+        <div class="col-sm-10">
+          <input class="form-control" [(ngModel)]="kernelWidth" placeholder="Enter odd integer kernel width">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Sigma Value</label>
+        <div class="col-sm-10">
+          <input class="form-control" [(ngModel)]="sigma" placeholder="Enter sigma value for gaussian filter">
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-primary" (click)="submit()">Submit</button>
+      </div>
     </div>
   </div>
 </div>

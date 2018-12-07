@@ -52,7 +52,11 @@ export class ImageProcessingService {
                         image: Image): Observable<DIPResponse> {
     intervalColors = [ ...intervalColors ];
     intervalColors.push(lastIntervalColor);
-    return this.http.post(INTENSITY_SLICE_URL, {filename: image.name, slices, interval_colors: intervalColors})
+    return this.http.post(INTENSITY_SLICE_URL, {
+        filename: image.name,
+        slices,
+        interval_colors: intervalColors
+      })
       .pipe(map((response) => new DIPResponse(response)));
   }
 
@@ -61,12 +65,15 @@ export class ImageProcessingService {
       .pipe(map((response) => new DIPResponse(response)));
   }
 
-  public smoothenSharpen(filter: string, image: Image): Observable<DIPResponse> {
-    return this.http.post(SMOOTHEN_SHARPEN_URL, {filter, filename: image.name})
+  public smoothenSharpen(filter: string, sigma = 1, kernelWidth = 3, image: Image): Observable<DIPResponse> {
+    return this.http.post(SMOOTHEN_SHARPEN_URL, {
+        filter,
+        filename: image.name,
+        args: {
+          kernel_width: parseInt(kernelWidth, 10),
+          sigma: parseInt(sigma, 10)
+        }
+      })
       .pipe(map((response) => new DIPResponse(response)));
-  }
-
-  private blobify(obj: any): Blob {
-    return new Blob([JSON.stringify(obj)], { type : 'application/json' });
   }
 }
