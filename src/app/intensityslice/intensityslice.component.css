@@ -15,7 +15,6 @@ spinner {
 .img-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
 }
 
 .form-width {
@@ -42,7 +41,7 @@ img {
 
 spinner, error {
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: 50%;
   z-index: 10;
 }
