@@ -21,16 +21,16 @@ export class GrayToColorComponent implements OnInit {
   public blueAmp = '1';
   public phaseShifts = {
     red: {
-      shift: '0',
-      amp: '1'
+      shift: 0,
+      amp: 1
     },
     green: {
-      shift: '0',
-      amp: '1'
+      shift: 0,
+      amp: 1
     },
     blue: {
-      shift: '0',
-      amp: '1'
+      shift: 0,
+      amp: 1
     }
   };
   public result: DIPResponse;
