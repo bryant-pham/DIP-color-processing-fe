@@ -4,7 +4,6 @@ import { ImageProcessingService } from '../services/imageprocessing.service';
 import { DIPResponse } from '../models/DIPResponse';
 import { SelectedImageService } from '../services/selectedimage.service';
 import { Image } from '../models/image';
-import { PhaseShift } from '../models/phaseshift';
 
 @Component({
   selector: 'gray-to-color',
