@@ -1,6 +1,7 @@
 <div class="container-fluid dip-container">
   <spinner *ngIf="loading"></spinner>
   <error *ngIf="error"></error>
+  <div *ngIf="!selectedImage" style="font-size: 2.5em;">Select an image from the toolbar on the right -------></div>
   <div class="img-container">
     <div>
       <div *ngIf="selectedImage">
