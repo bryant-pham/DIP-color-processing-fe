@@ -13,7 +13,12 @@ import { PhaseShift } from '../models/phaseshift';
 })
 export class GrayToColorComponent implements OnInit {
   public selectedImage: Image;
-  // public phaseShifts: PhaseShift = new PhaseShift();
+  public redShift = '0';
+  public greenShift = '0';
+  public blueShift = '0';
+  public redAmp = '1';
+  public greenAmp = '1';
+  public blueAmp = '1';
   public phaseShifts = {
     red: {
       shift: '0',
@@ -62,11 +67,11 @@ export class GrayToColorComponent implements OnInit {
   }
 
   private convertInts(): void {
-    this.phaseShifts.blue.shift = parseInt(this.phaseShifts.blue.shift, 10);
-    this.phaseShifts.blue.amp = parseInt(this.phaseShifts.blue.amp, 10);
-    this.phaseShifts.green.shift = parseInt(this.phaseShifts.green.shift, 10);
-    this.phaseShifts.green.amp = parseInt(this.phaseShifts.green.amp, 10);
-    this.phaseShifts.red.shift = parseInt(this.phaseShifts.red.shift, 10);
-    this.phaseShifts.red.amp = parseInt(this.phaseShifts.red.amp, 10);
+    this.phaseShifts.blue.shift = parseInt(this.blueShift, 10);
+    this.phaseShifts.blue.amp = parseInt(this.blueAmp, 10);
+    this.phaseShifts.green.shift = parseInt(this.greenShift, 10);
+    this.phaseShifts.green.amp = parseInt(this.greenAmp, 10);
+    this.phaseShifts.red.shift = parseInt(this.redShift, 10);
+    this.phaseShifts.red.amp = parseInt(this.redAmp, 10);
   }
 }
