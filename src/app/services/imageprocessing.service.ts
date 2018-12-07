@@ -65,7 +65,7 @@ export class ImageProcessingService {
       .pipe(map((response) => new DIPResponse(response)));
   }
 
-  public smoothenSharpen(filter: string, sigma = 1, kernelWidth = 3, image: Image): Observable<DIPResponse> {
+  public smoothenSharpen(filter: string, sigma: string, kernelWidth: string, image: Image): Observable<DIPResponse> {
     return this.http.post(SMOOTHEN_SHARPEN_URL, {
         filter,
         filename: image.name,

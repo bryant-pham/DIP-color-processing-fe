@@ -15,8 +15,8 @@ export class SmoothenSharpenComponent implements OnInit {
   public selectedImage: Image;
   public result: DIPResponse;
   public loading = false;
-  public sigma: number;
-  public kernelWidth: number;
+  public sigma: string;
+  public kernelWidth: string;
 
   constructor(
     private processingService: ImageProcessingService,
