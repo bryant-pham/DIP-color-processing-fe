@@ -16,6 +16,7 @@ export class GrayToColorComponent implements OnInit {
   public phaseShifts: PhaseShift = new PhaseShift();
   public result: DIPResponse;
   public loading = false;
+  public error = false;
 
   constructor(
     private processingService: ImageProcessingService,
@@ -29,10 +30,19 @@ export class GrayToColorComponent implements OnInit {
 
   public submit(): void {
     this.loading = true;
+    this.error = false;
     this.processingService.grayToColor(this.phaseShifts, this.selectedImage)
       .subscribe((response: DIPResponse) => {
         this.result = response;
         this.loading = false;
+        this.error = false;
+      },
+(error: any) => {
+        this.error = true;
+        this.loading = false;
+        setTimeout(() => {
+          this.error = false;
+        }, 10000);
       });
   }
 }

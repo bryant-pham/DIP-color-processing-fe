@@ -43,9 +43,9 @@ img {
   align-self: center;
 }
 
-spinner {
+spinner, error {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   z-index: 10;
 }

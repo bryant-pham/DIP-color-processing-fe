@@ -1,5 +1,6 @@
 <div class="container-fluid dip-container">
   <spinner *ngIf="loading"></spinner>
+  <error *ngIf="error"></error>
   <div class="img-container">
     <div class="original-image-container">
       <div *ngIf="selectedImage">

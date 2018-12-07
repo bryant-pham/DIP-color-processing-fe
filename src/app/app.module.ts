@@ -31,6 +31,7 @@ import { SelectedImageService } from './services/selectedimage.service';
 import { GrayToColorComponent } from './graytocolor/graytocolor.component';
 import { SmoothenSharpenComponent } from './smoothensharpen/smoothensharpen.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { ErrorComponent } from './error/error.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -60,6 +61,7 @@ interface StoreType {
     GrayToColorComponent,
     SmoothenSharpenComponent,
     SpinnerComponent,
+    ErrorComponent,
     NoContentComponent
   ],
   /**

@@ -16,6 +16,7 @@ export class IntensitySliceComponent implements OnInit {
   public sliceColors: string[] = [''];
   public lastSliceColor: string = '';
   public loading = false;
+  public error = false;
   public result: DIPResponse;
   public selectedImage: Image;
 
@@ -55,11 +56,20 @@ export class IntensitySliceComponent implements OnInit {
 
   public submit(): void {
     this.loading = true;
+    this.error = false;
     this.processingService
       .intensitySlice(this.sliceValues, this.sliceColors, this.lastSliceColor, this.selectedImage)
       .subscribe((response: DIPResponse) => {
         this.result = response;
         this.loading = false;
-      });
+        this.error = false;
+      },
+(error: any) => {
+        this.error = true;
+        this.loading = false;
+        setTimeout(() => {
+          this.error = false;
+        }, 10000);
+    });
   }
 }

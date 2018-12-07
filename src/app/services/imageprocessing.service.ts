@@ -8,8 +8,8 @@ import { Image } from '../models/image';
 import { select, Store } from '@ngrx/store';
 import { SetImages } from '../reducers/actions/image.action';
 
-// const DEV_HOST = 'http://127.0.0.1:5000/';
-const DEV_HOST = 'http://192.241.234.235:5000/';
+const DEV_HOST = 'http://127.0.0.1:5000/';
+// const DEV_HOST = 'http://192.241.234.235:5000/';
 const COLOR_MODEL_TRANSFORM_URL = DEV_HOST + 'colormodeltransform';
 const INTENSITY_SLICE_URL = DEV_HOST + 'intensityslice';
 const GRAY_TO_COLOR_URL = DEV_HOST + 'graytocolor';

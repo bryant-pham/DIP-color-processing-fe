@@ -1,34 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-
-import { ImageProcessingService } from '../services/imageprocessing.service';
-import { DIPResponse } from '../models/DIPResponse';
-import { SelectedImageService } from '../services/selectedimage.service';
-import { Image } from '../models/image';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'spinner',
   styleUrls: [ './spinner.component.css' ],
   templateUrl: './spinner.component.html'
 })
-export class SpinnerComponent implements OnInit {
-  public modelSpace: string = 'HSI';
-  public selectedImage: Image;
-  public result: DIPResponse;
-
-  constructor(
-    private processingService: ImageProcessingService,
-    private selectedImageService: SelectedImageService
-  ) {}
-
-  public ngOnInit(): void {
-    this.selectedImageService.getSelectedImage()
-      .subscribe((image: Image) => this.selectedImage = image);
-  }
-
-  public submit(): void {
-    this.processingService.colorModelTransform(this.modelSpace, this.selectedImage)
-      .subscribe((response: DIPResponse) => {
-        this.result = response;
-      });
-  }
+export class SpinnerComponent {
 }
